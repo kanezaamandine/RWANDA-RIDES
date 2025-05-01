@@ -1,0 +1,156 @@
+.white{
+    background-color: black;
+    padding: 0;
+    position: relative;
+    top: -20px;
+    height: 160px;
+    padding-top: 20px;
+   
+}
+
+.auth{
+    background-color: white;
+    height: 107vh;
+    animation: fadeIn 1s ease-out forwards;
+    
+}
+
+.whats{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    padding-left: 570px;
+    padding-top: 110px;
+    color: rgba(0, 0, 0, 0.89);
+}
+
+.enter{
+    width: 390px;
+    height: 50px;
+    border-color: rgba(0, 0, 0, 0.318);
+    border-radius: 7px;
+    padding-left: 13px;
+    color: rgba(0, 0, 0, 0.533);
+    margin-left: 570px;
+    position: relative;
+    top: 55px;
+    box-shadow: black;
+
+}
+
+.enterpas{
+    width: 390px;
+    height: 50px;
+    border-color: rgba(0, 0, 0, 0.318);
+    border-radius: 7px;
+    padding-left: 13px;
+    color: rgba(0, 0, 0, 0.533);
+    margin-left: 570px;
+    position: relative;
+    top: 73px;
+    box-shadow: black;
+
+}
+.pass-enter{
+    width: 390px;
+    height: 35px;
+    border-color: rgba(0, 0, 0, 0.318);
+    background-color: black;
+    border-radius: 7px;
+    padding-left: 13px;
+    color: white;
+    font-weight: 600;
+    margin-left: 568px;
+    position: relative;
+    top: 120px;
+    box-shadow: black;
+    transition: all 0.5s ease-in-out;
+}
+
+.pass-enter:hover{
+
+    background-color:rgba(0, 0, 0, 0.788) ;
+    color: white;
+    width: 395px;
+
+}
+
+.dashed{
+
+    margin-left: 567px;
+    top: 140px;
+    position: relative;
+    color: rgba(0, 0, 0, 0.779);
+}
+
+.google{
+
+    width: 390px;
+    height: 50px;
+    background-color: black;
+    border-color: rgba(0, 0, 0, 0.318);
+    border-radius: 7px;
+    padding-left: 13px;
+    color: white;
+    margin-left: 570px;
+    position: relative;
+    top: 200px;
+    box-shadow: black;
+    font-weight: 550;
+    transition: all 0.5s ease-in-out;
+
+}
+
+.apple{
+
+    width: 390px;
+    background-color: black;
+    height: 50px;
+    border-color: rgba(0, 0, 0, 0.318);
+    border-radius: 7px;
+    padding-left: 13px;
+    color: white;
+    margin-left: 570px;
+    position: relative;
+    top: 215px;
+    box-shadow: black;
+    font-weight: 550; 
+    transition: all 0.5s ease-in-out;
+}
+
+ .google:hover{
+    background-color: rgba(0, 0, 0, 0.788);
+    color: white;
+    transform: scale(1.03);
+    
+}
+
+.apple:hover{
+    background-color: rgba(0, 0, 0, 0.788);
+    color: white;
+    transform: scale(1.03);
+    
+}
+
+.proceed{
+    margin-left: 610px;
+    color: rgba(0, 0, 0, 0.64);
+    top: 230px;
+    position: relative; 
+    font-size: small;
+    font-weight: 450;
+    /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px); 
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+

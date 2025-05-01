@@ -1,0 +1,9 @@
+.app {
+    opacity: 1;
+    transition: opacity 1s ease; /* Smooth fade-out */
+  }
+  
+  .fade-out {
+    opacity: 0; /* Invisible */
+  }
+  
