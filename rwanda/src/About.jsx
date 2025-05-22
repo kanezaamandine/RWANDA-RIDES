@@ -1,11 +1,11 @@
 import './about.css';
-import Navbar from './Navbar';
 import { Shield } from 'lucide-react';
 import { MapPin } from 'lucide-react';
 import { Users } from 'lucide-react';
 import { Car } from 'lucide-react';
 import { Clock } from 'lucide-react';
 import { Calendar } from 'lucide-react';
+import Logbar from './Logout';
 
 
 
@@ -14,7 +14,7 @@ function Aboutus(){
     return(
        <div className='about'>
         <div className="white"> 
-            <Navbar />
+            <Logbar />
             </div>
             <p className='aboutrr'> About Rwanda Rides</p>
             <p className='land'>Rwanda Rides is the first ride-sharing platfrom designed specifically for</p>

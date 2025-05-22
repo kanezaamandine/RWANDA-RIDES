@@ -1,0 +1,348 @@
+.tracking-container {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.tracking-section {
+    max-width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.status-banner {
+    background-color: white;
+    border-radius: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin: 0;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.status-dot.arriving {
+    background-color: #FFA000;
+    animation: pulse 2s infinite;
+}
+
+.status-dot.in_progress {
+    background-color: #4CAF50;
+}
+
+.status-dot.completed {
+    background-color: #2196F3;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.arrival-time {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-weight: 500;
+}
+
+.driver-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 20px;
+}
+
+.driver-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.driver-avatar {
+    background-color: #e0e0e0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.driver-details h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+}
+
+.driver-rating {
+    color: #FFA000;
+    margin: 5px 0;
+}
+
+.car-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.driver-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-button.call {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.action-button.message {
+    background-color: #2196F3;
+    color: white;
+}
+
+.ride-details-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 20px;
+}
+
+.location-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.pickup, .destination {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.location-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.pickup-dot {
+    background-color: #4CAF50;
+}
+
+.destination-dot {
+    background-color: #F44336;
+}
+
+.route-line {
+    width: 2px;
+    height: 30px;
+    background-color: #ddd;
+    margin-left: 5px;
+}
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    color: #666;
+    font-size: 14px;
+}
+
+.address {
+    color: #333;
+    font-weight: 500;
+}
+
+.ride-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.info-item.total {
+    text-align: right;
+}
+
+.info-item.total .value {
+    color: #1976D2;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.wallet-section {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 20px;
+}
+
+.wallet-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.wallet-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.wallet-balance {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.balance-label {
+    color: #666;
+    font-size: 14px;
+}
+
+.balance-amount {
+    color: #1976D2;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.recent-transactions h4 {
+    margin: 0 0 15px 0;
+    color: #333;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.transaction-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.transaction-info .date {
+    color: #666;
+    font-size: 12px;
+}
+
+.amount {
+    font-weight: 500;
+}
+
+.amount.credit {
+    color: #4CAF50;
+}
+
+.amount.debit {
+    color: #F44336;
+}
+
+@media (max-width: 768px) {
+    .tracking-container {
+        padding: 0;
+    }
+    
+    .status-banner {
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .status-banner {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .driver-card,
+    .ride-details-card,
+    .wallet-section {
+        margin: 0 15px;
+    }
+
+    .driver-card {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .driver-actions {
+        width: 100%;
+    }
+
+    .action-button {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .ride-info {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .info-item.total {
+        text-align: left;
+    }
+} 

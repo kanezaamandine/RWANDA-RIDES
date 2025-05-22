@@ -36,6 +36,24 @@ function Authentication() {
           
         />
 
+      <input style={{marginTop:"10px"}}
+          type="text"
+          className="enter"
+          placeholder="Enter your username"
+          value={emailOrPhone}
+          onChange={(e) => setEmailOrPhone(e.target.value)}
+          
+        />
+
+         <input style={{marginTop:"10px"}}
+          type="text"
+          className="enter"
+          placeholder="Enter your password"
+          value={emailOrPhone}
+          onChange={(e) => setEmailOrPhone(e.target.value)}
+          
+        />
+
         <button type="submit" className="pass-enter">Continue</button>
 
         {error && <p className="text-red-500 mt-2">{error}</p>}

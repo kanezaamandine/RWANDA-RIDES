@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import BookRide from './BookTicket';
 
 
-const Navbar = () => {
+const Logbar = () => {
   const navigate = useNavigate();
 
   const acceptClick = () => {
@@ -95,12 +95,12 @@ const Navbar = () => {
         <Link to="/contact" onClick={ContactClick}>Contact</Link>
       </div>
       <div className="auth-buttons">
-        <button className="login-btn" onClick={acceptClick}>Login</button>
-        <button className="signup-btn" onClick={signClick}>Sign Up</button>
+        
+        <button className="signup-btn" onClick={signClick}>Log out</button>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default Logbar;
 

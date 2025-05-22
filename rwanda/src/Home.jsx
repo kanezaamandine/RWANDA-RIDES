@@ -1,4 +1,5 @@
-import Navbar from './Navbar.jsx';
+
+import Firstbar from './Firstpage.jsx';
 import BookingForm from './BookingForm';
 import Map from './Map';
 import { useNavigate } from 'react-router-dom';
@@ -61,7 +62,7 @@ function Home() {
         }}
       />
       <div className={`app ${isFading ? 'fade-out' : ''}`}>
-        <Navbar />
+        <Firstbar />
         <div className="main-content">
           <div className="left-section">
             <div className="hero-content">
