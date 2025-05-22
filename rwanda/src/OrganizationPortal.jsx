@@ -210,10 +210,6 @@ function OrganizationPortal() {
                         ))}
                     </div>
                     <h2 className="org-section-title">Active Drivers</h2>
-                    <div className="org-info-box">
-                        Select a driver to view more details or manage their status.<br/>
-                        You can also filter, search, or take actions on drivers here.
-                    </div>
                 </section>
                 <section className="org-col">
                     <h2 className="org-section-title">Pending Ride Requests</h2>
