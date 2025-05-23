@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import './organization.css';
-import { Map, Users, Car, Clock, DollarSign, Search, Filter, Send, Phone, Navigation, RefreshCw, Download, History } from 'lucide-react';
+import { 
+    Map, Users, Car, Clock, DollarSign, Search, Filter, Send, 
+    Phone, Navigation, RefreshCw, Download, History, BarChart2,
+    AlertCircle, Star, Shield, Settings, MessageSquare, Bell,
+    Sun, Moon
+} from 'lucide-react';
 import Logbar from './Logout';
 import { rideService } from './services/rideService';
 
 function OrganizationPortal() {
+    const [theme, setTheme] = useState('light');
     const [activeDrivers, setActiveDrivers] = useState([
         {
             id: "DRV001",
@@ -18,7 +24,19 @@ function OrganizationPortal() {
             todayEarnings: 45000,
             avgResponseTime: "2.5",
             acceptanceRate: 95,
-            distance: 2.3
+            distance: 2.3,
+            lastActive: "2 mins ago",
+            phoneNumber: "+250 788 123 456",
+            documents: {
+                license: "Valid",
+                insurance: "Valid",
+                vehicleInspection: "Valid"
+            },
+            performance: {
+                onTimeRate: 98,
+                cancellationRate: 2,
+                customerRating: 4.8
+            }
         },
         {
             id: "DRV002",
@@ -75,7 +93,11 @@ function OrganizationPortal() {
             estimatedDuration: 15,
             fare: 2500,
             passengerName: "Alice Johnson",
-            passengerPhone: "+250 788 123 456"
+            passengerPhone: "+250 788 123 456",
+            paymentMethod: "Cash",
+            specialInstructions: "Extra luggage",
+            priority: "High",
+            surgeMultiplier: 1.2
         },
         {
             id: "RIDE002",
@@ -106,6 +128,22 @@ function OrganizationPortal() {
     const [selectedDriver, setSelectedDriver] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [filterStatus, setFilterStatus] = useState('all');
+    const [showDriverDetails, setShowDriverDetails] = useState(false);
+    const [showAnalytics, setShowAnalytics] = useState(false);
+    const [notifications, setNotifications] = useState([]);
+
+    
+    const [analyticsData, setAnalyticsData] = useState({
+        dailyRides: 156,
+        activeDrivers: 45,
+        totalRevenue: 1250000,
+        averageRating: 4.7,
+        peakHours: ["8:00", "17:00"],
+        popularRoutes: [
+            { from: "Airport", to: "City Center", count: 45 },
+            { from: "City Center", to: "Convention Center", count: 32 }
+        ]
+    });
 
     useEffect(() => {
         loadActiveDrivers();
@@ -116,6 +154,20 @@ function OrganizationPortal() {
         }, 30000);
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+    
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        setTheme(savedTheme);
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    }, []);
+
+    const toggleTheme = () => {
+        const newTheme = theme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    };
 
     const loadActiveDrivers = async () => {
         try {
@@ -139,9 +191,23 @@ function OrganizationPortal() {
         try {
             await rideService.assignRideToDriver(rideId, driverId);
             loadPendingRides();
+            sendDriverNotification(driverId, {
+                type: 'new_ride',
+                message: 'New ride assigned to you',
+                rideId: rideId
+            });
         } catch (error) {
             console.error('Error assigning ride:', error);
         }
+    };
+
+    const sendDriverNotification = (driverId, notification) => {
+        console.log('Sending notification to driver:', driverId, notification);
+    };
+
+    const handleDriverSelect = (driver) => {
+        setSelectedDriver(driver);
+        setShowDriverDetails(true);
     };
 
     const filteredDrivers = activeDrivers.filter(driver => {
@@ -151,7 +217,6 @@ function OrganizationPortal() {
         return matchesSearch && matchesFilter;
     });
 
-   
     const onlineCount = activeDrivers.filter(d => d.status === 'online').length;
     const busyCount = activeDrivers.filter(d => d.status === 'busy').length;
     const offlineCount = activeDrivers.filter(d => d.status === 'offline').length;
@@ -160,13 +225,29 @@ function OrganizationPortal() {
         <div className="org-container">
             <div className="white"><Logbar /></div>
             <div className="org-header">
-                <h1>Driver Management Portal</h1>
+                <div className="org-header-top">
+                    <h1>Driver Management Portal</h1>
+                    <div className="org-header-actions">
+                        <button className="org-action-btn" onClick={toggleTheme} title={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}>
+                            {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+                        </button>
+                        <button className="org-action-btn">
+                            <Bell size={20} />
+                            <span className="notification-badge">3</span>
+                        </button>
+                        <button className="org-action-btn">
+                            <Settings size={20} />
+                        </button>
+                    </div>
+                </div>
+                
                 <div className="org-dashboard-stats">
                     <div className="stat-card">
                         <Users className="stat-icon" />
                         <div>
                             <div className="stat-label">Active Drivers</div>
                             <div className="stat-value">{onlineCount}</div>
+                            <div className="stat-trend positive">+5% from yesterday</div>
                         </div>
                     </div>
                     <div className="stat-card">
@@ -174,6 +255,7 @@ function OrganizationPortal() {
                         <div>
                             <div className="stat-label">On Trip</div>
                             <div className="stat-value">{busyCount}</div>
+                            <div className="stat-trend">Current</div>
                         </div>
                     </div>
                     <div className="stat-card">
@@ -181,38 +263,130 @@ function OrganizationPortal() {
                         <div>
                             <div className="stat-label">Pending Rides</div>
                             <div className="stat-value">{pendingRides.length}</div>
+                            <div className="stat-trend">Needs attention</div>
+                        </div>
+                    </div>
+                    <div className="stat-card">
+                        <DollarSign className="stat-icon" />
+                        <div>
+                            <div className="stat-label">Today's Revenue</div>
+                            <div className="stat-value">RWF {analyticsData.totalRevenue.toLocaleString()}</div>
+                            <div className="stat-trend positive">+12% from yesterday</div>
                         </div>
                     </div>
                 </div>
             </div>
+
+    
             <div className="org-main-grid">
                 <section className="org-col">
+                    <div className="org-section-header">
+                        <h2>Active Drivers</h2>
+                        <div className="org-driver-filters">
+                            <div className="search-box">
+                                <Search size={16} />
+                                <input 
+                                    type="text" 
+                                    placeholder="Search drivers..." 
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                />
+                            </div>
+                            <select 
+                                className="org-driver-filter"
+                                value={filterStatus}
+                                onChange={(e) => setFilterStatus(e.target.value)}
+                            >
+                                <option value="all">All Drivers</option>
+                                <option value="online">Active</option>
+                                <option value="busy">On Trip</option>
+                                <option value="offline">Offline</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div className="org-driver-table">
                         <div className="org-driver-table-header">
                             <span>Status</span>
                             <span>Name</span>
+                            <span>Plaque</span>
                             <span>Car</span>
                             <span>Location</span>
                             <span>Rating</span>
                             <span>Trips</span>
                             <span>Earnings</span>
+                            <span>Actions</span>
                         </div>
-                        {activeDrivers.map(driver => (
-                            <div className="org-driver-table-row" key={driver.id}>
+                        {filteredDrivers.map(driver => (
+                            <div 
+                                className="org-driver-table-row" 
+                                key={driver.id}
+                                onClick={() => handleDriverSelect(driver)}
+                            >
                                 <span className={`org-driver-status-dot ${driver.status}`}></span>
-                                <span className="org-driver-table-name" title={driver.name}>{driver.name}</span>
-                                <span className="org-driver-table-car" title={driver.vehicleModel + ' ' + driver.vehiclePlate}>{driver.vehicleModel.split(' ')[0]} {driver.vehiclePlate}</span>
-                                <span className="org-driver-table-location" title={driver.currentLocation}>{driver.currentLocation}</span>
-                                <span>⭐ {driver.rating}</span>
-                                <span>{driver.completedTrips}</span>
-                                <span>RWF {driver.todayEarnings.toLocaleString()}</span>
+                                <span className="org-driver-table-name" title={driver.name}>
+                                    {driver.name}
+                                    <div className="driver-details">
+                                        <span className="driver-phone">{driver.phoneNumber}</span>
+                                        <span className="driver-rating">⭐ {driver.rating}</span>
+                                    </div>
+                                </span>
+                                <span className="org-driver-table-plate" title={driver.vehiclePlate}>
+                                    {driver.vehiclePlate}
+                                </span>
+                                <span className="org-driver-table-car" title={driver.vehicleModel}>
+                                    {driver.vehicleModel.split(' ')[0]}
+                                </span>
+                                <span className="org-driver-table-location" title={driver.currentLocation}>
+                                    {driver.currentLocation}
+                                    <div className="location-details">
+                                        <span className="last-active">{driver.lastActive}</span>
+                                    </div>
+                                </span>
+                                <span className="rating-cell">
+                                    ⭐ {driver.rating}
+                                    <div className="rating-details">
+                                        <span>Last 30 days</span>
+                                    </div>
+                                </span>
+                                <span className="trips-cell">
+                                    {driver.completedTrips}
+                                    <div className="trips-details">
+                                        <span>Today: {Math.floor(driver.completedTrips / 30)}</span>
+                                    </div>
+                                </span>
+                                <span className="earnings-cell">
+                                    RWF {driver.todayEarnings.toLocaleString()}
+                                    <div className="earnings-details">
+                                        <span>Today's earnings</span>
+                                    </div>
+                                </span>
+                                <span className="actions-cell">
+                                    <button className="action-btn" title="Message">
+                                        <MessageSquare size={16} />
+                                    </button>
+                                    <button className="action-btn" title="View Details">
+                                        <Navigation size={16} />
+                                    </button>
+                                </span>
                             </div>
                         ))}
                     </div>
-                    <h2 className="org-section-title">Active Drivers</h2>
                 </section>
+
+            
                 <section className="org-col">
-                    <h2 className="org-section-title">Pending Ride Requests</h2>
+                    <div className="org-section-header">
+                        <h2>Pending Ride Requests</h2>
+                        <div className="org-ride-filters">
+                            <select className="org-ride-filter">
+                                <option value="all">All Requests</option>
+                                <option value="urgent">Urgent</option>
+                                <option value="scheduled">Scheduled</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div className="org-card-list">
                         {pendingRides.map(ride => (
                             <div className="org-ride-card" key={ride.id}>
@@ -221,32 +395,97 @@ function OrganizationPortal() {
                                         <div className="org-ride-id">Ride #{ride.id}</div>
                                         <div className="org-ride-time">Requested: {ride.requestTime}</div>
                                     </div>
-                                    <div className={`org-ride-status-badge ${ride.status}`}>{ride.status}</div>
+                                    <div className={`org-ride-status-badge ${ride.status}`}>
+                                        {ride.status}
+                                        {ride.priority === 'High' && (
+                                            <AlertCircle size={14} className="priority-indicator" />
+                                        )}
+                                    </div>
                                 </div>
+
                                 <div className="org-ride-locations">
-                                    <div><span className="org-ride-label">Pickup:</span> {ride.pickup}</div>
-                                    <div><span className="org-ride-label">Destination:</span> {ride.destination}</div>
+                                    <div className="location-row">
+                                        <span className="location-dot pickup"></span>
+                                        <div>
+                                            <div className="org-ride-label">Pickup</div>
+                                            <div className="location-text">{ride.pickup}</div>
+                                        </div>
+                                    </div>
+                                    <div className="location-row">
+                                        <span className="location-dot destination"></span>
+                                        <div>
+                                            <div className="org-ride-label">Destination</div>
+                                            <div className="location-text">{ride.destination}</div>
+                                        </div>
+                                    </div>
                                 </div>
+
                                 <div className="org-ride-stats-row">
-                                    <div>Distance: {ride.distance} km</div>
-                                    <div>Est: {ride.estimatedDuration} min</div>
-                                    <div><DollarSign size={14} style={{verticalAlign:'middle'}} /> RWF {ride.fare.toLocaleString()}</div>
+                                    <div className="stat-item">
+                                        <Navigation size={14} />
+                                        <span>{ride.distance} km</span>
+                                    </div>
+                                    <div className="stat-item">
+                                        <Clock size={14} />
+                                        <span>{ride.estimatedDuration} min</span>
+                                    </div>
+                                    <div className="stat-item">
+                                        <DollarSign size={14} />
+                                        <span>RWF {ride.fare.toLocaleString()}</span>
+                                        {ride.surgeMultiplier > 1 && (
+                                            <span className="surge-badge">x{ride.surgeMultiplier}</span>
+                                        )}
+                                    </div>
                                 </div>
-                                <div className="org-ride-passenger">Passenger: {ride.passengerName}</div>
+
+                                <div className="org-ride-passenger">
+                                    <div className="passenger-info">
+                                        <div className="passenger-name">{ride.passengerName}</div>
+                                        <div className="passenger-phone">
+                                            <Phone size={14} />
+                                            {ride.passengerPhone}
+                                        </div>
+                                    </div>
+                                    <div className="payment-info">
+                                        <span className="payment-method">{ride.paymentMethod}</span>
+                                    </div>
+                                </div>
+
+                                {ride.specialInstructions && (
+                                    <div className="org-ride-instructions">
+                                        <AlertCircle size={14} />
+                                        <span>{ride.specialInstructions}</span>
+                                    </div>
+                                )}
+
                                 <div className="org-ride-actions-row">
                                     <select className="org-driver-select">
                                         <option>Assign Driver</option>
-                                        {activeDrivers.map(driver => (
-                                            <option key={driver.id}>{driver.name} - {driver.vehiclePlate}</option>
-                                        ))}
+                                        {activeDrivers
+                                            .filter(d => d.status === 'online')
+                                            .map(driver => (
+                                                <option key={driver.id} value={driver.id}>
+                                                    {driver.name} - {driver.vehiclePlate}
+                                                </option>
+                                            ))}
                                     </select>
-                                    <button className="org-send-btn"><Send size={16} /> Send Request</button>
+                                    <button 
+                                        className="org-send-btn"
+                                        onClick={() => handleAssignRide(ride.id, selectedDriver?.id)}
+                                    >
+                                        <Send size={16} /> Send Request
+                                    </button>
                                 </div>
                             </div>
                         ))}
                     </div>
                 </section>
             </div>
+
+            {showDriverDetails && selectedDriver && (
+                <div className="driver-details-modal">
+                </div>
+            )}
         </div>
     );
 }
