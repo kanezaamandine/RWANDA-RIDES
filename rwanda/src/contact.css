@@ -1,0 +1,165 @@
+.bby{
+
+    background-color: white;
+    height: 130vh;
+}
+
+.cont{
+
+    font-weight: 750;
+    font-size: 28px;
+    padding-left: 430px;
+    position: relative;
+    top: 15px;
+}
+
+.con{
+
+    height: 400px;
+    width: 470px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: black;
+    position: relative;
+    top: 100px;
+    margin-left: 120px;
+    background-color: rgba(171, 171, 173, 0.2);
+    border-radius: 10px;
+}
+
+.small-con{
+
+    height: 250px;
+    width: 470px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: black;
+    position: relative;
+    top: 120px;
+    margin-left: 130px;
+    background-color: rgba(171, 171, 173, 0.2);
+    border-radius: 10px;
+}
+
+.big-con{
+
+    
+    height: 665px;
+    width: 700px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: black;
+    position: relative;
+    top: -554px;
+    left: -60px;
+    margin-left: 550px;
+    background-color: rgba(171, 171, 173, 0.2);
+    border-radius: 10px;
+
+}
+
+.conif{
+    margin-left: 140px;
+    position: relative;  
+    top: 40px;
+    font-weight: 750;
+    font-size: 18px;
+    color: black;
+}
+
+.conifs{
+
+    margin-left: 300px;
+    position: relative;  
+    top: 40px;
+    font-weight: 750;
+    font-size: 18px;
+    color: black;
+}
+
+.circle-10{
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.866);
+    margin-left: 40px;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    top: 85px;
+}
+
+.circle-11{
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.866);
+    margin-left: 40px;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    top: 100px;
+}
+
+.circle-12{
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.866);
+    margin-left: 40px;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    top: 115px;
+}
+
+.con-in{
+
+    height: 55px;
+    width: 400px;
+    position: relative;
+    top: 65px;
+    margin-left: 35px;
+    background-color: rgba(255, 255, 255, 0.53) ;
+    border: 1px solid rgba(171, 171, 173, 0.2);
+    border-radius: 7px;
+
+}
+
+.con-ins{
+
+    height: 55px;
+    width: 400px;
+    position: relative;
+    top: 75px;
+    margin-left: 35px;
+    background-color: rgba(255, 255, 255, 0.53);
+    border-radius: 7px;
+    border: 2px solid rgba(171, 171, 173, 0.2);
+
+}
+
+.circle-15{
+
+    border-radius: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.866);
+    background-color: white;
+    margin-left: 15px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    top: 13px;
+    padding-left: 10px;
+    padding-top: 2px;
+    font-weight: bold;
+
+}
+
+.faq{
+
+    padding-left: 60px;
+    position: relative;
+    top: -15px;
+    font-weight: 400;
+    
+}
+
+.circle-17{
+
+    color: rgba(0, 0, 0, 0.866);
+    padding-left: 15px;
+    margin-top: 5px;
+    width: 40px;
+    height: 40px;
+}
