@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./auth.css";
-import Navbar from "./Navbar";
+import Firstbar from "./Firstpage";
 import { ToastContainer, toast } from 'react-toastify';
 import { User, Car } from 'lucide-react';
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,7 +55,7 @@ function Authorization() {
   return (
     <div className="auth">
       <div className="white">
-        <Navbar />
+        <Firstbar />
       </div>
 
       <div className="role-selector">

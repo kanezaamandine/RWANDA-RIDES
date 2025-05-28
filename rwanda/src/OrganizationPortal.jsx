@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Navbar from './Navbar';
 import './organization.css';
 import { 
     Map, Users, Car, Clock, DollarSign, Search, Filter, Send, 
     Phone, Navigation, RefreshCw, Download, History, BarChart2,
     AlertCircle, Star, Shield, Settings, MessageSquare, Bell,
+    Moon,Sun
     
 } from 'lucide-react';
 
@@ -222,6 +224,7 @@ function OrganizationPortal() {
 
     return (
         <div className="org-container">
+            <Navbar/>
             <div className="org-header">
                 <div className="org-header-top">
                     <h1>Driver Management Portal</h1>

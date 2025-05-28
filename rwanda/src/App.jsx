@@ -13,14 +13,13 @@ import OrganizationPortal from './OrganizationPortal.jsx';
 
 
 
-const Index = () => {
+const App = () => {
   return (
   <>
  
     
         <Routes>
             <Route  path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
             <Route path='/auth' element= {<Authorization />}/>
             <Route path= '/authe' element= {<Authentication/>}/>
             <Route path='/about' element= {<Aboutus/>}/>
@@ -28,7 +27,7 @@ const Index = () => {
             <Route path='/book' element= {<BookRide/>}/>
             <Route path='/driver' element= {<DriverPortal/>}/>
             <Route path='/rider' element= {<RideTracking/>}/>
-            <Route path='/organize' element= {<OrganizationPortal/>}/>
+            <Route path='/organise' element= {<OrganizationPortal/>}/>
             
            
            
@@ -40,4 +39,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default App;

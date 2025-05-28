@@ -325,7 +325,7 @@ export default function BookRide() {
           </div>
         </div>
 
-        {/* Choose a Ride Card */}
+        
         <div
           className="choose-ride-card"
           style={{
