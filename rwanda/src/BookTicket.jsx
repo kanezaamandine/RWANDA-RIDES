@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaCarSide,  FaRegClock, FaCreditCard } from "react-icons/fa";
 import './BookRide.css';
+import Logbar from "./Logbar";
 
 
 const rideOptions = [
@@ -56,8 +57,13 @@ export default function BookRide() {
 
   return (
     <div style={{ background: '#fff', minHeight: '100vh', width: '100vw', display: 'flex', flexDirection: 'column', margin: 0, padding: 0 }}>
+      <div style ={{ position:'relative', top:'-10px', width:'100%'}}>
+        <Logbar />
+      </div>
+      
      
       <div style={{ textAlign: 'center', fontWeight: 700, fontSize: '2rem', padding: '2rem 0', fontFamily: 'inherit' }}>
+
         Book Your Ride In Rwanda
       </div>
       <div className="main-content-container" style={{ 
