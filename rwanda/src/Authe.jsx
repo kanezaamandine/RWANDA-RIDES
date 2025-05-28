@@ -21,6 +21,7 @@ function Authentication() {
     console.log('Submitted:', { emailOrPhone, username, password, role });
     setError('');
   };
+  
 
   return (
     <div className="auth" style={{

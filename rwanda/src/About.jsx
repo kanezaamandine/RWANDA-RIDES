@@ -5,6 +5,8 @@ import { Users } from 'lucide-react';
 import { Car } from 'lucide-react';
 import { Clock } from 'lucide-react';
 import { Calendar } from 'lucide-react';
+import Logbar from './Logbar';
+
 
 
 
@@ -14,7 +16,7 @@ function Aboutus(){
     return(
        <div className='about'>
         <div className="white"> 
-        
+        <Logbar/>
             </div>
             <p className='aboutrr'> About Rwanda Rides</p>
             <p className='land'>Rwanda Rides is the first ride-sharing platfrom designed specifically for</p>
