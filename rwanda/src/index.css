@@ -1,0 +1,269 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Map Styles */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1{
+  margin-top: 70px;
+  animation: fade-in-down 5s ease-in-out ;
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+    background: linear-gradient(to right, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    font-weight: bolder;
+    
+  
+  }
+}
+
+.animate-fade-in-down {
+  animation: fade-in-down 0.8s ease-out forwards;
+}
+
+
+
+
+.zoom-btn {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zoom-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #000;
+  height: 80px;
+  margin-top: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  margin-left: 580px;
+  font-weight: 500;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #ccccccdd;
+  text-decoration:underline;
+}
+.rides{
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.login-btn, .signup-btn {
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.login-btn {
+  background: white;
+  color: black;
+  border: 1px solid white;
+}
+
+.link{
+  text-decoration: none;
+}
+
+.signup-btn {
+  background: rgba(60, 58, 58, 0.814);
+  color: white;
+  border: none;
+}
+
+/* Booking Form Styles */
+.booking-form {
+  background-color: white;
+  margin-bottom: 80px;
+  padding: 30px;
+  border-radius: 10px;
+  color: black;
+  
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: rgba(0, 0, 0, 0.83);
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.request-ride-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.request-ride-btn:hover {
+  background-color: #333;
+}
+
+/* Index Page Styles */
+.app {
+  min-height: 100vh;
+  background-color: #000;
+  color: white;
+}
+
+.main-content {
+  display: flex;
+  min-height: calc(100vh - 80px);
+}
+
+.left-section {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 18px;
+  color: #888;
+  margin-bottom: 40px;
+}
+
+.right-section {
+  flex: 1;
+  position: relative;
+}
+
+.get-started-btn {
+  width: 300px;
+  padding: 15px;
+  border-radius: 25px;
+  background-color: white;
+  color: black;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0px;
+  position: relative;
+  top: -40px;
+  margin-left: 100px;
+  animation: getstarted 1s ease-in-out infinite;
+  
+}
+@keyframes getstarted{
+  from{
+    background: linear-gradient(to right, #5b5962, #f0f0f0);
+ 
+  }
+  to{
+    background: linear-gradient(to left,#5b5962 , #f0f0f0);
+    
+  }
+}
+
+.get-started-btn:hover {
+  background-color: #ababab;
+  transform: scale(1.1);
+  transition: 1s ease-in-out;
+}
+iframe{
+  height: 90vh;
+  width: 60vw;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+
