@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import './organization.css';
+import Logbar from './Logbar';
 import { 
     Map, Users, Car, Clock, DollarSign, Search, Filter, Send, 
     Phone, Navigation, RefreshCw, Download, History, BarChart2,
@@ -224,7 +225,9 @@ function OrganizationPortal() {
 
     return (
         <div className="org-container">
-            <Navbar/>
+            <div style ={{ position:'relative', top:'-10px', width:'100%'}}>
+        <Logbar />
+      </div>
             <div className="org-header">
                 <div className="org-header-top">
                     <h1>Driver Management Portal</h1>

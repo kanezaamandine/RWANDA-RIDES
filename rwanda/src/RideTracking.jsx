@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './rideTracking.css';
 import { MapPin, Clock, Car, User, CreditCard, Navigation, Phone, Wallet } from 'lucide-react';
+import Logbar from './Logbar';
 
 
 function RideTracking() {
@@ -56,7 +57,9 @@ function RideTracking() {
         <div className="tracking-container">
             
 
-            
+                <div style ={{ position:'relative', top:'-10px', width:'100%'}}>
+        <Logbar />
+      </div>
             <div className="tracking-section">
                 <div className="status-banner">
                     <div className="status-indicator">

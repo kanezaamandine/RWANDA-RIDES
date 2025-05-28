@@ -2,6 +2,7 @@ import './contact.css';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { LineChart } from 'lucide-react';
 import { MessageCircle } from 'lucide-react';
+import Logbar from './Logbar';
 
 function Contacting(){
 
@@ -9,6 +10,9 @@ function Contacting(){
         <>
        
         <div className='bby'>
+                <div style ={{ position:'relative', top:'-10px', width:'100%'}}>
+        <Logbar />
+      </div>
 
             
             <p className='cont'> Have questions or need assistance? We're here to help!</p>
