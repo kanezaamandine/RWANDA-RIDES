@@ -3,6 +3,7 @@ import "./auth.css";
 import Firstbar from "./Firstpage";
 import { ToastContainer, toast } from 'react-toastify';
 import { User, Car } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Authorization() {
@@ -10,16 +11,16 @@ function Authorization() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [role, setRole] = useState('client'); 
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!emailOrPhone.trim() || !password.trim()) {
-      setError('');
+      setError('Please fill in all fields');
       return;
     }
 
-   
     if (role === 'driver') {
       if (emailOrPhone === "+250788123456" && password === "driver123") {
         localStorage.setItem('userInfo', JSON.stringify({
@@ -29,7 +30,7 @@ function Authorization() {
           role: 'driver',
           isAuthenticated: true
         }));
-        window.location.href = '/driver-portal';
+        navigate('/driver-portal');
       } else {
         setError('Invalid driver credentials');
       }
@@ -42,14 +43,13 @@ function Authorization() {
           role: 'client',
           isAuthenticated: true
         }));
-        window.location.href = '/book-ride';
+        navigate('/book-ride');
       } else {
         setError('Invalid client credentials');
       }
     }
 
     console.log('Submitted:', { emailOrPhone, password, role });
-    setError('');
   };
 
   return (

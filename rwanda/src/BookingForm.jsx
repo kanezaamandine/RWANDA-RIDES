@@ -16,14 +16,6 @@ const BookingForm = () => {
     });
   };
 
-  const handleError = (e) => {
-    if (!loggedIn) {
-      e.preventDefault(); 
-      alert('Please login or sign up first. Click "Get Started" to continue.');
-    }
-  };
-  
-
   return (
     <div className="booking-form">
       <div className="form-group">
@@ -42,8 +34,7 @@ const BookingForm = () => {
         <input type="text" placeholder=" 🔄 Enter destination" onClick={handleInputClick}/>
       </div>
 
-      <button className="request-ride-btn"
-       onClick={handleInputClick}>
+      <button className="request-ride-btn" onClick={handleInputClick}>
         <Car />
         Request a Ride
         <span className="arrow">→</span>

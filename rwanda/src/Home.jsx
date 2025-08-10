@@ -20,7 +20,7 @@ function Home() {
     console.log("Button clicked, preparing to navigate");
 
     setTimeout(() => {
-      navigate('/login'); 
+      navigate('/auth'); 
     }, 1500);
   };
   const [runTour, setRunTour] = useState(true);
